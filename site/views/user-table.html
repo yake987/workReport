@@ -1,0 +1,132 @@
+<%- include('./layouts/user_header'); %>
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="am-cf am-padding">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">周报列表</strong> / <small>weekly reports</small></div>
+        </div>
+        <div class="am-g">
+            <form class="am-form" method="get" action="/user-table.html">
+                <div class="am-u-md-9 am-cf">
+                    <div class="am-fr am-cf">
+                        <div class="am-btn-toolbar am-fl">
+                            <div class="am-btn-group am-btn-group-xs ">
+                                <input type="text" name='startTime' class="am-form-field" placeholder="开始日期" data-am-datepicker readonly>
+                            </div>
+                            <div class="am-form-group am-margin-left am-fl">
+                                <input type="text" name='endTime' class="am-form-field" placeholder="结束日期" data-am-datepicker readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-u-md-3 am-cf">
+
+
+                    <div class="am-fl">
+                        <div class="am-input-group am-input-group-xs">
+                            <input id='lab-name' type="text" placeholder="输入用户姓名" class="am-form-field" name='name' value="<%=name%>">
+                            <span class="am-input-group-btn">
+                  <button class="am-btn am-btn-default" type="submit">搜索</button>
+                </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="am-g">
+            <div class="am-u-sm-12">
+                <form class="am-form">
+                    <table class="am-table am-table-striped am-table-hover table-main">
+                        <thead>
+                            <tr>
+                                <th class="table-id">ID</th>
+                                <th class="table-title">任务（工作内容）</th>
+                                <th class="table-date">预计完成时间</th>
+                                <th class="table-date">实际完成时间</th>
+                                <th class="table-set">负责人</th>
+                                <th class="table-date">进度</th>
+                                <th class="table-date">备注</th>
+                                 <th class="table-set">添加日期</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i=0;i<reports.length;i++){ %>
+                                <tr>
+                                    <td>
+                                        <%=i+1%>
+                                    </td>
+                                    <td>
+                                        <a href="#">
+                                            <%=reports[i].jobContent%>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <%=reports[i].planTime%>
+                                    </td>
+                                    <td>
+                                        <%=reports[i].finishTime%>
+                                    </td>
+                                    <td>
+                                        <%=reports[i].name %>
+                                    </td>
+                                    <td>
+                                        <%=reports[i].progress%>
+                                    </td>
+                                    <td>
+                                        <%=reports[i].remark%>
+                                    </td><td>
+                                        <%=reports[i].addTime%>
+                                    </td>
+                
+                                </tr>
+                                <% }; %>
+                                    <!--     <tr>
+             
+              <td>13</td>
+              <td><a href="#">Business management</a></td>
+              <td>default</td>
+              <td>测试1号</td>
+              <td>2014年9月4日 7:28:47</td>
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                    <button class="am-btn am-btn-default am-btn-xs"><span class="am-icon-copy"></span> 复制</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</button>
+                  </div>
+                </div>
+              </td>
+            </tr>  -->
+                        </tbody>
+                    </table>
+                    <div class="am-cf">
+                        共
+                        <%=count%>条记录
+                            <div class="am-fr">
+                                <ul class="am-pagination">
+                                    <% if (total) {%>
+                                        <li class=""><a href="/user-table.html?limit=15&pagenumber=1&name=<%=name%>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                        <% for(var i=1;i<=total;i++){%>
+                                            <%if(pageNumber==i){%>
+                                                <li class="am-active">
+                                                    <%} else{%>
+                                                        <li>
+                                                            <%}%>
+                                                                <a href="/user-table.html?limit=15&pagenumber=<%=i%>&name=<%=name%>">
+                                                                    <%=i%><span class="sr-only"></span></a>
+                                                        </li>
+                                                        <%}%>
+                                                            <li class="">
+                                                                <a href="/user-table.html?limit=15&pagenumber=<%=total%>&name=<%=name%>"> &raquo;</a>
+                                                                <li>
+                                                                    <% }%>
+                                </ul>
+                            </div>
+                    </div>
+                    <hr />
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- content end -->
+    <%- include('./layouts/footer'); %>

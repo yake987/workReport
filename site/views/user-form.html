@@ -1,0 +1,139 @@
+<%- include('./layouts/user_header'); %>
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="am-cf am-padding">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">添加周报</strong> / <small>Add weekly report</small></div>
+        </div>
+        <div class="am-tabs am-margin" data-am-tabs>
+            <div class="am-tabs-bd">
+                <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+                    <form class="am-form" action="/addReport" method="post">
+                        <div class="am-g am-margin-top-sm">
+                            <div class="am-u-sm-2 am-text-right">
+                                任务（工作内容）
+                            </div>
+                            <div class="am-u-sm-4 am-u-end">
+                                <textarea rows="2" name='jobContent' ></textarea>
+                            </div>
+                        </div>
+                        <div class="am-g am-margin-top">
+                            <div class="am-u-sm-2 am-text-right">预计完成时间</div>
+                            <div class="am-u-sm-10">
+                                <div class="am-btn-group" data-am-button>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="planTime" id="option6" value="周日"> 周日
+                                    </label>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="planTime" id="option1" value="周一"> 周一
+                                    </label>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="planTime" id="option2" value="周二"> 周二
+                                    </label>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="planTime" id="option3" value="周三"> 周三
+                                    </label>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="planTime" id="option4" value="周四"> 周四
+                                    </label>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="planTime" id="option5" value="周五"> 周五
+                                    </label>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="planTime" id="option6" value="周六"> 周六
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-g am-margin-top">
+                            <div class="am-u-sm-2 am-text-right">实际完成时间</div>
+                            <div class="am-u-sm-10">
+                                <div class="am-btn-group" data-am-button>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="finishTime" id="option6" value="周日"> 周日
+                                    </label>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="finishTime" id="option1" value="周一"> 周一
+                                    </label>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="finishTime" id="option2" value="周二"> 周二
+                                    </label>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="finishTime" id="option3" value="周三"> 周三
+                                    </label>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="finishTime" id="option4" value="周四"> 周四
+                                    </label>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="finishTime" id="option5" value="周五"> 周五
+                                    </label>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="finishTime" id="option6" value="周六"> 周六
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-g am-margin-top-sm">
+                            <div class="am-u-sm-2 am-text-right">
+                                负责人
+                            </div>
+                            <div class="am-u-sm-10">
+                                <div class="am-btn-group" data-am-button>
+
+                                 <label class="am-radio am-success">
+      <input type="radio" name="workerId" value="<%=workerId%>" data-am-ucheck checked>
+     <%=name%>
+    </label>
+                                  <!--   <label class="am-btn am-btn-default am-btn-xs am-success">
+                                      <input type="radio" name="workerId" id="option6" value=""data-am-ucheck checked> 
+                                  </label> -->
+                                  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-g am-margin-top">
+                            <div class="am-u-sm-2 am-text-right">进度</div>
+                            <div class="am-u-sm-10">
+                                <div class="am-btn-group" data-am-button>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="progress" id="option6" value='20%'> 20%
+                                    </label>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="progress" id="option1" value='40%'> 40%
+                                    </label>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="progress" id="option2" value='50%'> 50%
+                                    </label>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="progress" id="option3" value='60%'> 60%
+                                    </label>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="progress" id="option4" value='80%'> 80%
+                                    </label>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="progress" id="option7" value='90%'> 90%
+                                    </label>
+                                    <label class="am-btn am-btn-default am-btn-xs">
+                                        <input type="radio" name="progress" id="option5" value='100%'> 100%
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-g am-margin-top-sm">
+                            <div class="am-u-sm-2 am-text-right">
+                                备注
+                            </div>
+                            <div class="am-u-sm-4 am-u-end">
+                                <textarea rows="2" name="remark"></textarea>
+                            </div>
+                        </div>
+                        <div class="am-margin-top-sm am-u-sm-9 am-u-sm-offset-2">
+                            <button type="submit" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
+                            <button type="button" class="am-btn am-btn-primary am-btn-xs">放弃保存</button> <%=reason%>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content end -->
+    <%- include('./layouts/footer'); %>

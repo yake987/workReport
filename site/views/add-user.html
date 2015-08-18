@@ -1,0 +1,57 @@
+<%- include('./layouts/header'); %>
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="am-cf am-padding">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">添加用户信息</strong> / <small>Add User Information</small></div>
+        </div>
+        <hr/>
+        <div class="am-g">
+            <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
+               
+            </div>
+            <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+                <form class="am-form am-form-horizontal" method="post" action="/adduser">
+                    <div class="am-form-group">
+                        <label for="user-name" class="am-u-sm-3 am-form-label">姓名</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" id="user-name" name="name"  placeholder="姓名 / Name">
+                            <small>输入你的名字，让我们记住你。</small>
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="user-email" class="am-u-sm-3 am-form-label">电子邮件</label>
+                        <div class="am-u-sm-9">
+                            <input type="email" id="user-email" name="email"  placeholder="输入你的电子邮件 / Email">
+                            <small>邮箱你懂得...</small>
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="user-phone" class="am-u-sm-3 am-form-label">手机</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" id="user-phone" name="mobile"  placeholder="输入你的手机号码 / mobile">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="user-QQ" class="am-u-sm-3 am-form-label">QQ</label>
+                        <div class="am-u-sm-9">
+                            <input type="email" id="user-QQ" name="QQ" placeholder="输入你的QQ号码">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="user-intro" class="am-u-sm-3 am-form-label">简介</label>
+                        <div class="am-u-sm-9">
+                            <textarea class="" name="remark" rows="5" id="user-intro" placeholder="输入个人简介"></textarea>
+                            <small>250字以内.....</small>
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <div class="am-u-sm-9 am-u-sm-push-3">
+                            <button type="submit" class="am-btn am-btn-primary">保存信息</button>  <%=reason%>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- content end -->
+    <%- include('./layouts/footer'); %>
