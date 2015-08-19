@@ -1,0 +1,70 @@
+ <%- include('./layouts/user_header'); %>
+
+  <!-- content start -->
+  <div class="admin-content">
+    <div class="am-cf am-padding">
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">个人资料</strong> / <small>Personal information</small></div>
+    </div>
+
+    <hr/>
+
+    <div class="am-g">
+
+     <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
+               
+            </div>
+
+      <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+                <form class="am-form am-form-horizontal" method="post" action="/user-info.html">
+                    <div class="am-form-group">
+                        <label for="user-name" class="am-u-sm-3 am-form-label">姓名</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" id="user-name" name="name" value="<%=user.name%>"  placeholder="姓名 / Name" readonly>
+                            
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="user-email" class="am-u-sm-3 am-form-label">电子邮件</label>
+                        <div class="am-u-sm-9">
+                            <input type="email" id="user-email" name="email"  value="<%=user.email%>"  placeholder="输入你的电子邮件 / Email" readonly>
+                            
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="user-pwd" class="am-u-sm-3 am-form-label">密码</label>
+                        <div class="am-u-sm-9">
+                            <input type="password" id="user-pwd" name="passWord"   value="<%=user.passWord%>" placeholder="输入你的密码 / password">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="user-phone" class="am-u-sm-3 am-form-label">手机</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" id="user-phone" name="mobile"   value="<%=user.mobile%>" placeholder="输入你的手机号码 / mobile">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="user-QQ" class="am-u-sm-3 am-form-label">QQ</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" id="user-QQ" name="QQ"  value="<%=user.QQ %>" placeholder="输入你的QQ号码">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="user-intro" class="am-u-sm-3 am-form-label">简介</label>
+                        <div class="am-u-sm-9">
+                            <textarea class="" name="remark" rows="5" id="user-intro" placeholder="输入个人简介"><%=user.remark%></textarea>
+                            <small>250字以内.....</small>
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <div class="am-u-sm-9 am-u-sm-push-3">
+                            <button type="submit" class="am-btn am-btn-primary">保存修改</button>  <%=reason%>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+    </div>
+  </div>
+  <!-- content end -->
+ <%- include('./layouts/footer'); %>

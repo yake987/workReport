@@ -10,7 +10,7 @@
                
             </div>
             <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
-                <form class="am-form am-form-horizontal" method="post" action="/adduser">
+                <form class="am-form am-form-horizontal" method="post" action="/add-user.html">
                     <div class="am-form-group">
                         <label for="user-name" class="am-u-sm-3 am-form-label">姓名</label>
                         <div class="am-u-sm-9">
@@ -29,12 +29,13 @@
                         <label for="user-phone" class="am-u-sm-3 am-form-label">手机</label>
                         <div class="am-u-sm-9">
                             <input type="text" id="user-phone" name="mobile"  placeholder="输入你的手机号码 / mobile">
+                            <small>输入手机号则默认密码为手机号,否则为123456</small>
                         </div>
                     </div>
                     <div class="am-form-group">
                         <label for="user-QQ" class="am-u-sm-3 am-form-label">QQ</label>
                         <div class="am-u-sm-9">
-                            <input type="email" id="user-QQ" name="QQ" placeholder="输入你的QQ号码">
+                            <input type="text" id="user-QQ" name="QQ" placeholder="输入你的QQ号码">
                         </div>
                     </div>
                     <div class="am-form-group">
