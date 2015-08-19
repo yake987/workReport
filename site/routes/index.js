@@ -1,6 +1,9 @@
 var Worker = require('../models/worker.js');
 var WorkReport = require('../models/workReport.js');
 var async = require('async');
+var ccap = require('ccap'); //导入验证码模块
+var RandExp = require('randexp');
+var xlsx = require('node-xlsx');
 var xlsx = require('node-xlsx');
 var dateFormat = require('dateFormat');
 
@@ -23,6 +26,27 @@ function init(app) {
             reason: ''
         });
     });
+
+    app.get('/capt/:random', function(req, res) {
+        var captcha = ccap({
+            width: 120, //配置验证码图片的width,default is 256
+            height: 40, //配置验证码图片的 height,default is 60
+            offset: 25, //验证码 文本间距,default is 40
+            quality: 200, //图片质量,default is 50
+            fontsize: 36, //字符字体大小,default is 57
+            generate: function() { //用户自定义生成验证码的函数
+                return new RandExp(/[A-Za-z0-9]{4}/).gen();
+            }
+        });
+
+        var ary = captcha.get(); //ary[0] 验证码字符串,ary[1] 验证码图片数据.
+        var text = ary[0]; //验证码字符串
+        req.session.captNumber = text;
+        console.log(text); //后台输出验证码字符串
+        var buffer = ary[1]; //验证码图片数据
+        res.end(buffer);
+
+    });
     //登录页面
     app.get('/', function(req, res) {
         res.render('index', {
@@ -31,7 +55,7 @@ function init(app) {
             pwd: ''
         });
     });
-    app.get('/login', function(req, res) {
+    app.get('/login.html', function(req, res) {
         res.render('index', {
             reason: '',
             email: '',
@@ -48,10 +72,19 @@ function init(app) {
     });
 
     //用户登录
-    app.post('/login', function(req, res) {
+    app.post('/login.html', function(req, res) {
         var where = {};
         where.email = req.body.email || null;
         where.passWord = req.body.passWord || '';
+        var captNumber = req.body.captNumber || '';
+        if (!captNumber || (!req.session.captNumber) || (captNumber.toUpperCase() != req.session.captNumber.toUpperCase())) {
+            res.render('index', {
+                reason: '验证码输入有误!',
+                email: where.email,
+                pwd: where.passWord
+            });
+
+        } else
         if (where.email && where.passWord) {
             Worker.findOne(where, function(error, doc) {
                 if (error) {
@@ -61,7 +94,7 @@ function init(app) {
                     });
                 } else {
                     if (doc) {
-                        console.log(doc);
+
                         req.session.user = doc;
                         req.session.name = doc.name;
                         if (doc.name == '管理员') {
@@ -155,24 +188,24 @@ function init(app) {
                     remark: obj.remark
                 }
             }, function(err, info) {
-                 if(err){
-                      res.render('500', {
-                                reason: '系统繁忙!'
-                            });
-                 }else if (info) {
-                    req.session.user.QQ=obj.QQ;
-                    req.session.user.mobile=obj.mobile;
-                    req.session.user.passWord=obj.passWord;
-                    req.session.user.remark=obj.remark;
+                if (err) {
+                    res.render('500', {
+                        reason: '系统繁忙!'
+                    });
+                } else if (info) {
+                    req.session.user.QQ = obj.QQ;
+                    req.session.user.mobile = obj.mobile;
+                    req.session.user.passWord = obj.passWord;
+                    req.session.user.remark = obj.remark;
                     res.render('user-info', {
                         user: obj,
                         reason: '用户资料修改成功!'
                     });
                 } else {
-                    console.log(2,info);
+
                     res.render('500', {
-                                reason: '系统繁忙!'
-                            });
+                        reason: '系统繁忙!'
+                    });
                 }
             });
         }
@@ -638,7 +671,7 @@ function init(app) {
                             WorkReport.count(where, function(error, count) {
                                 if (error) {
                                     errCode = 500;
-                                    console.log(1, errCode);
+
                                     callback(errCode);
                                 } else {
                                     total = Math.ceil(count / resultsPerPage);
@@ -670,7 +703,7 @@ function init(app) {
                             }, function(err, result) {
                                 if (err) {
                                     errCode = 500;
-                                    console.log(2, errCode);
+
                                     next(err);
                                 } else {
                                     item.name = result.name;
@@ -710,7 +743,7 @@ function init(app) {
                                 }]
                             });
                         } catch (ex) {
-                            console.log(111, ex);
+
                             errCode = 500;
                         }
                         callback();

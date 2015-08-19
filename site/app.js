@@ -1,11 +1,8 @@
 var express = require('express');
 var ejs = require('ejs');
 var mongoose = require('mongoose');
-var session = require('express-session')
-var dbOptions = {
-    'user': 'admin',
-    'pass': 'admin'
-};
+var session = require('express-session');
+
 // mongoose.connect('mongodb://admin:admin@ds029317.mongolab.com:29317/winqr');
 mongoose.connect('mongodb://127.0.0.1:27017/weekly_report');
 var bodyParser = require('body-parser');
