@@ -48,11 +48,25 @@ function init(app) {
     });
     //登录页面
     app.get('/', function(req, res) {
-        res.render('index', {
-            reason: '',
-            email: '',
-            pwd: ''
-        });
+        if (req.session && req.session.user) {
+            if (req.session.user.name == '管理员') {
+                res.render('admin-index', {
+
+                });
+            } else {
+                res.render('user-index', {
+
+                });
+            }
+        } else {
+            res.render('index', {
+                reason: '',
+                email: '',
+                pwd: ''
+            });
+        }
+
+
     });
     app.get('/login.html', function(req, res) {
         res.render('index', {
