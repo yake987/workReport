@@ -314,7 +314,7 @@ function init(app) {
             };
         }
         if (endTime) {
-            where.endTime = {
+            where.addTime = {
                 $lte: endTime.toString().trim()
             };
         }
@@ -456,7 +456,7 @@ function init(app) {
             };
         }
         if (endTime) {
-            where.endTime = {
+            where.addTime = {
                 $lte: endTime.toString().trim()
             };
         }
