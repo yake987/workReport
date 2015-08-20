@@ -4,7 +4,6 @@ var async = require('async');
 var ccap = require('ccap'); //导入验证码模块
 var RandExp = require('randexp');
 var xlsx = require('node-xlsx');
-var xlsx = require('node-xlsx');
 var dateFormat = require('dateFormat');
 
 // 初始化管理员账号
